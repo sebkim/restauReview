@@ -6,6 +6,10 @@ var gulp = require('gulp');
 // var appDev = 'dev/';
 // var appProd = 'app/';
 
+var htmlmin = require('gulp-htmlmin');
+var uglify = require('gulp-uglify');
+var rename = require("gulp-rename");
+
 /* CSS */
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
@@ -56,9 +60,24 @@ gulp.task('build-ts', function() {
 // });
 //
 
+gulp.task('minify-js', function() {
+  return gulp.src(['app/**/*.js'])
+  .pipe(uglify())
+  .pipe(gulp.dest('app'))
+});
+gulp.task('minify-html', function() {
+  return gulp.src('indexReadable.html')
+    .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
+    .pipe(rename("index.html"))
+    .pipe(gulp.dest(''))
+});
+
+
 gulp.task('watch', function () {
     gulp.watch('dev/' + '**/*.ts', ['build-ts']);
     gulp.watch('assets/' + 'scss/**/*.scss', ['build-css']);
+    gulp.watch('app/**/*.js', ['minify-js']);
+    gulp.watch('*.html', ['minify-html']);
 });
 
-gulp.task('default', ['watch', 'build-ts', 'build-css']);
+gulp.task('default', ['watch', 'build-ts', 'build-css', 'minify-html']);
