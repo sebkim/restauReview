@@ -1,0 +1,81 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand">Restaurant Review Frontend</p>
+    </div>
+    <ul class="nav navbar-nav">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="myFilterText">Description filter</label>
+          <input id="myFilterText" class="form-control" type="text" #filter (keyup)="0">
+        </div>
+      </form>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- filterHeaders -->
+<div class="row">
+  <!-- Single button -->
+  <div class="btn-group" dropdown>
+    <button type="button" dropdownToggle class="headerFilter btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{foodTypesStr}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu headerFilter">
+      <li *ngFor="let type of types" (click)="onFilterClick('type', type)"><a>{{type}}</a></li>
+      <li (click)="onFilterClick('type', '')"><a>All food types</a></li>
+    </ul>
+  </div>
+  <!-- Single button -->
+  <div class="btn-group" dropdown>
+    <button type="button" dropdownToggle class="headerFilter btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{priceMap[priceStr]}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu headerFilter">
+      <li *ngFor="let price of prices" (click)="onFilterClick('price', price)"><a>{{priceMap[price]}}</a></li>
+      <li (click)="onFilterClick('price', '')"><a>All Prices</a></li>
+    </ul>
+  </div>
+  <!-- Single button -->
+  <div class="btn-group" dropdown>
+    <button type="button" dropdownToggle class="headerFilter btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ratingStr}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu headerFilter">
+      <li *ngFor="let rating of ratings" (click)="onFilterClick('rating', rating)"><a>{{rating}}</a></li>
+      <li (click)="onFilterClick('rating', '')"><a>All Ratings</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container-fluid">
+    <div *ngFor="let restau of restaurants | descFilter: filter.value | cateFilter: 'type' : nowType | cateFilter: 'price' : nowPrice | cateFilter: 'rating': nowRating" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" tabindex="0">
+      <div class="well">
+        <div class="restauHeader">
+          <a  (click)="navigateTo(restau.name, restau.reviews)" class="h4Clickable">{{restau.name}}</a>
+          <div class="rating">
+            <span *ngFor="let star of restau.emptyRatingArr" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <div class="emptyStarStart">
+              <span *ngFor="let star of restau.emptyReverseRatingArr" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p style="display: inline;"> | {{priceMap[restau.price]}} Price </p>
+        </div>
+        <br>
+        <hr>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-6">
+              <p>{{restau.description}}</p>
+            </div>
+            <div class="col-xs-6">
+              <img [src]="restau.image" alt="{{restau.imgDesc}}" width="100%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

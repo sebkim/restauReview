@@ -16,9 +16,7 @@
     "typings": "typings",
     "webdriver:update": "webdriver-manager update"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "author": "Sebo Kim",
   "license": "",
   "dependencies": {
@@ -43,6 +41,7 @@
   "devDependencies": {
     "canonical-path": "0.0.2",
     "concurrently": "^2.0.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.10",
     "gulp-sass": "^2.3.1",

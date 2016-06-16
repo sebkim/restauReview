@@ -9,76 +9,42 @@ hr {
   border: 1px solid #000;
 }
 
-// app.component
-
-.small {
-  display: none;
-}
-.big {
-  margin-right: 1em;
-}
 @media only screen and (max-width: 766px) {
-  .big {
-    display: none;
-  }
-  .small {
-    display: block;
-    margin-top: 0px;
-    margin-right: 0.5em;
-  }
-
-  .jumbotron {
-    font-size: 1.5em;
-    padding: 0px;
-    margin: 0px;
-    h1 {
-      margin-top:0;
-      padding-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-  }
-  .header {
-    .container-fluid {
-      padding: 0px;
-      margin: 0px;
-      border: 0px;
-    }
+  .headerFilter {
+    width: 95vw;
+    margin-left: 1.5em !important;
   }
 }
 
-.header {
-  padding-right: 1rem;
+@media only screen and (min-width: 766px) {
+  .headerFilter {
+    width: 33vw;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
 }
 
 .main {
-  padding: 1em;
   margin: 1em;
 }
 
-// geo.Component
-
-ul#compNameMenu {
-    padding: 0;
-    li {
-      display: inline-block;
-      margin-bottom: 20px;
-      a {
-        background-color: black;
-        color: white;
-        padding: 10px 20px;
-        margin-right: 15px;
-        text-decoration: none;
-        border-radius: 4px 4px 0 0;
-        &:hover {
-          background-color: orange;
-        }
-      }
-    }
+.h4Clickable {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-#mydata-btngroup {
-  button {
-    margin-bottom: 10px;
-  }
+.rating {
+  margin-left: 1em;
+  display: inline;
+}
+
+.emptyStarStart {
+  margin-left: -0.2em;
+  display: inline;
+}
+
+.restauHeader {
+  float: right;
 }
