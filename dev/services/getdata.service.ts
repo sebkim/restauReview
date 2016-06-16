@@ -7,7 +7,9 @@ import {Observable} from 'rxjs/Rx';
 export class GetdataService {
   restauJson: any;
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) {
+
+  }
 
   getRestauObservable() {
     // read datainfo json.
@@ -26,7 +28,7 @@ export class GetdataService {
   getReviewObservable(fName: string) {
     return this._http.get('json/'+ fName)
     .map((res:Response) => res.json());
-
   }
+
 
 }

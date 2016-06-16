@@ -92,4 +92,5 @@ export class RestauListComponent implements OnInit {
   navigateTo(name: string, fName: string) {
     this._router.navigate(['RestauReview', {restau: name, fName: fName}]);
   }
+  
 }

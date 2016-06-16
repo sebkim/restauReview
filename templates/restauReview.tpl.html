@@ -9,7 +9,7 @@
 </nav>
 
 <div class="restauReview">
-  <div class="container-flid">
+  <div class="container-fluid">
     <div class="row">
       <div class="well col-xs-12">
         <div class="">
@@ -28,6 +28,7 @@
           <li *ngFor="let hour of hours; let i=index">{{dayNames[i]}} : {{hour}}</li>
         </ul>
         <h6>Description: {{desc}}</h6>
+        <button (click)="navigateBack()" class="btn btn-success">Back</button>
         <hr>
       </div>
     </div>
@@ -49,6 +50,34 @@
         </div>
       </div>
       <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <form>
+          <div class="form-group">
+            <label for="ratingSelect">Rating</label>
+            <select id="ratingSelect" #ratingSel>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="yourName">Name: </label>
+            <input id="yourName" type="text" #yourName>
+          </div>
+          <div class="form-group">
+            <label for="reviewWrite" class="sr-only">Please write your review.</label>
+            <textarea #reviewContent class="form-control" name="reviewWrite" id="reviewWrite" rows="3" placeholder="Write your review."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="reviewSubmit"></label>
+            <button (click)="writeReview(reviewContent.value, ratingSel.value, yourName.value)" type='submit' class="btn btn-primary" id="reviewSubmit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

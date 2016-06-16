@@ -30,11 +30,8 @@ export class RestauReviewComponent implements OnInit {
     constructor(private _getdataService: GetdataService, private _routeParams: RouteParams, private _router:Router) {}
 
     ngOnInit():any {
-
-
         this.restau = this._routeParams.get('restau');
         this.fName = this._routeParams.get('fName');
-
         this._getdataService.getRestauObservable()
         .subscribe(
           data => {
@@ -71,6 +68,28 @@ export class RestauReviewComponent implements OnInit {
           },
           err => console.error(err)
         );
+    }
+
+    writeReview(content: string, rating: string, name: string) {
+      let hereReview={};
+      if(name==='') {
+        hereReview.reviewer="Someone";
+      } else {
+        hereReview.reviewer=name;
+      }
+      hereReview.stars = rating;
+      hereReview.date="";
+      hereReview.comments=content;
+
+      hereReview.emptyRatingArr=Array(+rating);
+      hereReview.emptyReverseRatingArr=Array(5-rating);
+
+      this.reviews.push(hereReview);
+
+    }
+
+    navigateBack() {
+      this._router.navigate(['RestauList']);
     }
 
 }
