@@ -10,48 +10,52 @@
 
 <div class="restauReview">
   <div class="container-fluid">
-    <div class="row">
+    <div role="restaurantInfo" class="row">
       <div class="well col-xs-12">
         <div class="">
-          <h1>{{restau}}</h1>
-          <div class="rating">
+          <h1 tabindex="0">{{restau}}</h1>
+          <div tabindex="0" class="rating" aria-labelledby="star_id">
             <span *ngFor="let star of emptyRatingArr" class="glyphicon glyphicon-star" aria-hidden="true"></span>
             <div class="emptyStarStart">
               <span *ngFor="let star of emptyReverseRatingArr" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
             </div>
           </div>
-          <p style="display: inline;"> | {{priceMap[price]}} Price </p>
+          <div id="star_id" class="sr-only">{{rating}} of 5 rating</div>
+          <p tabindex="0" style="display: inline;"> | {{priceMap[price]}} Price </p>
         </div>
-        <h5>Address : {{address}}</h5>
-        <h5>Phone : {{phone}}</h5>
-        <ul>
+        <h5 tabindex="0">Address : {{address}}</h5>
+        <h5 tabindex="0">Phone : {{phone}}</h5>
+        <ul tabindex="0" >
           <li *ngFor="let hour of hours; let i=index">{{dayNames[i]}} : {{hour}}</li>
         </ul>
-        <h6>Description: {{desc}}</h6>
+        <h6 tabindex="0">Description: {{desc}}</h6>
         <button (click)="navigateBack()" class="btn btn-success">Back</button>
         <hr>
       </div>
     </div>
-    <h3>Reviews</h3>
-    <div *ngFor="let review of reviews" class="row eachReview">
-      <div class="col-xs-12">
-        <div class="eachReviewHeader">
-          <p style="display: inline;">{{review.reviewer}}</p>
-          <div class="rating">
-            <span *ngFor="let star of review.emptyRatingArr" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-            <div class="emptyStarStart">
-              <span *ngFor="let star of review.emptyReverseRatingArr" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    <div role="reviewInfo">
+      <h3 tabindex="0">Reviews</h3>
+      <div role="eachReview" *ngFor="let review of reviews" class="row eachReview">
+        <div tabindex="0" class="col-xs-12">
+          <div role="eachReviewHeader" class="eachReviewHeader">
+            <p style="display: inline;">{{review.reviewer}}</p>
+            <div class="rating" aria-labelledby="star_id">
+              <span *ngFor="let star of review.emptyRatingArr" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <div class="emptyStarStart">
+                <span *ngFor="let star of review.emptyReverseRatingArr" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+              </div>
             </div>
+            <div id="star_id" class="sr-only">{{review.stars}} of 5 rating</div>
+            <p style="display: inline;"> |  {{review.date}}</p>
           </div>
-          <p style="display: inline;"> |  {{review.date}}</p>
+          <div role="eachReviewMain" class="eachReviewMain">
+            <p>{{review.comments}}</p>
+          </div>
         </div>
-        <div class="eachReviewMain">
-          <p>{{review.comments}}</p>
-        </div>
+        <hr>
       </div>
-      <hr>
     </div>
-    <div class="row">
+    <div role="writeReview" class="row">
       <div class="col-md-6">
         <form>
           <div class="form-group">

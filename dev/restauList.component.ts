@@ -89,8 +89,9 @@ export class RestauListComponent implements OnInit {
       }
     }
   }
-  navigateTo(name: string, fName: string) {
+  navigateTo(name: string, fName: string, event: any) {
+    event.preventDefault();
     this._router.navigate(['RestauReview', {restau: name, fName: fName}]);
   }
-  
+
 }

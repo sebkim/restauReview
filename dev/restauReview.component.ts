@@ -25,7 +25,7 @@ export class RestauReviewComponent implements OnInit {
     emptyRatingArr: any;
     emptyReverseRatingArr: any;
 
-    dayNames = ['Sunyday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     constructor(private _getdataService: GetdataService, private _routeParams: RouteParams, private _router:Router) {}
 
