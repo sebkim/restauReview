@@ -26,7 +26,7 @@
         <h5 tabindex="0">Address : {{address}}</h5>
         <h5 tabindex="0">Phone : {{phone}}</h5>
         <ul tabindex="0" >
-          <li *ngFor="let hour of hours; let i=index">{{dayNames[i]}} : {{hour}}</li>
+          <li tabindex="0" *ngFor="let hour of hours; let i=index">{{dayNames[i]}} : {{hour}}</li>
         </ul>
         <h6 tabindex="0">Description: {{desc}}</h6>
         <button (click)="navigateBack()" class="btn btn-success">Back</button>
